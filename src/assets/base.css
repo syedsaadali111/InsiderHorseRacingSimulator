@@ -1,0 +1,6 @@
+.button-primary {
+  @apply bg-indigo-800 rounded-lg p-2 text-white cursor-pointer;
+  &:hover {
+    @apply bg-indigo-800/85;
+  }
+}
