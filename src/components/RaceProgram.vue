@@ -1,6 +1,10 @@
 <template>
-  <div class="p-4 bg-indigo-50">
-    <h2 class="text-xl font-medium text-center">Program</h2>
+  <div class="pb-4 px-4 bg-indigo-50">
+    <h2
+      class="text-xl font-medium text-center sticky top-0 bg-indigo-50 py-2 border-b border-gray-300"
+    >
+      Program
+    </h2>
     <div v-if="!schedule" class="text-gray-500 p-2 rounded-xl mt-4">
       Race program is not yet generated.
     </div>

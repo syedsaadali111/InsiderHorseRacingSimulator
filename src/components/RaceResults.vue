@@ -1,6 +1,10 @@
 <template>
-  <div class="p-4 bg-indigo-50">
-    <h2 class="text-xl font-medium text-center">Results</h2>
+  <div class="pb-4 px-4 bg-indigo-50 relative">
+    <h2
+      class="text-xl font-medium text-center sticky top-0 bg-indigo-50 py-2 border-b border-gray-300"
+    >
+      Results
+    </h2>
     <div v-if="!results" class="text-gray-500 p-2 rounded-xl mt-4">No results available yet.</div>
     <table
       v-else

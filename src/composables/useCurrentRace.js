@@ -6,8 +6,8 @@ export const useCurrentRace = () => {
   const store = useStore();
   const currentRace = computed(() => store.state.currentRace);
 
-  const BIG_STEP = 20;
-  const SMALL_STEP = 10;
+  const BIG_STEP = 30;
+  const SMALL_STEP = 15;
 
   /* Horses take big or small steps based on their condition.
   higher condition has a higher probability of taking a big step,

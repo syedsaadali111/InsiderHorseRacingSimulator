@@ -18,10 +18,10 @@
         >
           <HorseImage
             :key="horse.name + '_' + raceNumber"
-            class="h-16 w-16 transition-all ease-linear"
+            class="h-16 w-16 transition-all ease-linear -translate-x-full"
             :style="{
               backgroundColor: horse.color,
-              left: `calc(${(horse.offset / raceLength) * 100}% - 65px)`,
+              left: `${(horse.offset / raceLength) * 100}%`,
               position: 'absolute',
             }"
           />
