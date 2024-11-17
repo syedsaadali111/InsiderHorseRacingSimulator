@@ -5,8 +5,12 @@
     </div>
 
     <div class="flex items-center justify-between gap-2">
-      <button class="button-primary" @click="generateSchedule">Generate Program</button>
-      <button class="button-primary" @click="toggleRace" :disabled="!schedule">Start/Pause</button>
+      <button class="button-primary" @click="generateSchedule" :disabled="isRunning">
+        Generate Program
+      </button>
+      <button class="button-primary" @click="toggleRace" :disabled="!schedule || isFinished">
+        Start/Pause
+      </button>
     </div>
   </nav>
 </template>
@@ -26,6 +30,7 @@ const { startRace, pauseRace } = useCurrentRace();
 const store = useStore();
 const isRunning = computed(() => store.state.isRunning);
 const schedule = computed(() => store.state.schedule);
+const isFinished = computed(() => store.state.isFinished);
 const toggleRace = () => {
   if (isRunning.value) {
     pauseRace();

@@ -5,6 +5,7 @@ import { useHorses } from '@/composables/useHorses';
 import HorseList from './components/HorseList.vue';
 import RaceProgram from './components/RaceProgram.vue';
 import RaceAnimation from './components/RaceAnimation.vue';
+import RaceResults from './components/RaceResults.vue';
 
 const { initializeGameState } = useHorses();
 
@@ -20,6 +21,7 @@ onMounted(() => {
       <HorseList class="overflow-y-auto flex-shrink-0" />
       <RaceAnimation class="overflow-y-auto flex-grow" />
       <RaceProgram class="overflow-y-auto flex-shrink-0" />
+      <RaceResults class="overflow-y-auto flex-shrink-0" />
     </div>
   </div>
 </template>

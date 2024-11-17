@@ -10,6 +10,9 @@ export const store = createStore({
 
       raceQueue: [],
       currentRace: null,
+      currentRaceResults: [],
+
+      isFinished: false,
     };
   },
 
@@ -35,12 +38,24 @@ export const store = createStore({
     setCurrentRace(state, race) {
       state.currentRace = race;
     },
+    setRaceFinished(state, isFinished) {
+      state.isFinished = isFinished;
+    },
+    setCurrentRaceResults(state, currentRaceResults) {
+      state.currentRaceResults = currentRaceResults;
+    },
+    setResults(state, results) {
+      state.results = results;
+    },
   },
 
   actions: {
     initializeHorses({ commit }, horses) {
       commit('setHorses', horses);
       commit('setProgramState', false);
+      commit('setSchedule', null);
+      commit('setRaceQueue', []);
+      commit('setCurrentRace', null);
     },
     updateSchedule({ commit }, schedule) {
       commit('setSchedule', schedule);
@@ -58,12 +73,26 @@ export const store = createStore({
       });
       commit('setCurrentRace', queue.shift());
       commit('setRaceQueue', queue);
+      commit('setRaceFinished', false);
+      commit('setResults', null);
     },
     setCurrentRace({ commit }, race) {
       commit('setCurrentRace', race);
     },
     setProgramState({ commit }, isRunning) {
       commit('setProgramState', isRunning);
+    },
+    setRaceFinished({ commit }, isFinished) {
+      commit('setRaceFinished', isFinished);
+    },
+    addCurrentRaceResults({ state, commit }, result) {
+      commit('setCurrentRaceResults', [...state.currentRaceResults, result]);
+    },
+    storeCurrentRaceResult({ state, commit }) {
+      const res = state.results || {};
+      res[state.currentRace.raceLength] = state.currentRaceResults;
+      commit('setResults', { ...res });
+      commit('setCurrentRaceResults', []);
     },
   },
 });
