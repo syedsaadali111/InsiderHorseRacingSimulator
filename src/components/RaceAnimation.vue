@@ -21,7 +21,7 @@
             class="h-16 w-16 transition-all ease-linear"
             :style="{
               backgroundColor: horse.color,
-              left: `${horse.offset - 64}px`,
+              left: `calc(${(horse.offset / raceLength) * 100}% - 65px)`,
               position: 'absolute',
             }"
           />

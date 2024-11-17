@@ -13,7 +13,7 @@
           <th colspan="3">Lap {{ index + 1 }}: {{ raceLength }}m</th>
         </tr>
         <tr>
-          <th class="text-left">Position</th>
+          <th class="text-left">Pos.</th>
           <th class="text-left">Name</th>
           <th class="text-left">Color</th>
         </tr>

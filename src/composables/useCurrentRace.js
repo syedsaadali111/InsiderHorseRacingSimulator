@@ -6,28 +6,27 @@ export const useCurrentRace = () => {
   const store = useStore();
   const currentRace = computed(() => store.state.currentRace);
 
-  const BIG_STEP = 10;
-  const SMALL_STEP = 5;
-  const MAX_OFFSET = 600;
+  const BIG_STEP = 20;
+  const SMALL_STEP = 10;
 
   /* Horses take big or small steps based on their condition.
   higher condition has a higher probability of taking a big step,
   but doesn't guarantee a win to keep things exciting! */
-  const getOffset = ({ condition, offset }) => {
+  const getOffset = ({ condition, offset }, raceLength) => {
     //return 0 if at the finish line already
-    if (offset >= MAX_OFFSET) {
+    if (offset >= raceLength) {
       return 0;
     }
     //generate a random number between 1 - 100
     const num = Math.floor(Math.random() * 100) + 1;
     if (num < condition) {
-      return Math.min(offset + BIG_STEP, MAX_OFFSET);
+      return Math.min(offset + BIG_STEP, raceLength);
     }
-    return Math.min(offset + SMALL_STEP, MAX_OFFSET);
+    return Math.min(offset + SMALL_STEP, raceLength);
   };
 
   const isRaceFinished = (race) => {
-    return race?.participants.every((p) => p.offset >= MAX_OFFSET);
+    return race?.participants.every((p) => p.offset >= race.raceLength);
   };
 
   const { pause, resume } = useIntervalFn(
@@ -48,11 +47,11 @@ export const useCurrentRace = () => {
       }
       const race = { ...currentRace.value };
       race.participants.forEach((p) => {
-        const newOffset = getOffset(p);
+        const newOffset = getOffset(p, race.raceLength);
         if (newOffset === 0) {
           return;
         }
-        if (newOffset >= MAX_OFFSET) {
+        if (newOffset >= race.raceLength) {
           store.dispatch('addCurrentRaceResults', p);
         }
         p.offset = newOffset;
