@@ -6,17 +6,31 @@
 
     <div class="flex items-center justify-between gap-2">
       <button class="button-primary" @click="generateSchedule">Generate Program</button>
-      <button class="button-primary">Start/Pause</button>
+      <button class="button-primary" @click="toggleRace" :disabled="!schedule">Start/Pause</button>
     </div>
   </nav>
 </template>
 
 <script setup>
+import { useCurrentRace } from '@/composables/useCurrentRace';
 import { useSchedule } from '@/composables/useSchedule';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 defineOptions({
   name: 'app-header',
 });
 
 const { generateSchedule } = useSchedule();
+const { startRace, pauseRace } = useCurrentRace();
+const store = useStore();
+const isRunning = computed(() => store.state.isRunning);
+const schedule = computed(() => store.state.schedule);
+const toggleRace = () => {
+  if (isRunning.value) {
+    pauseRace();
+  } else {
+    startRace();
+  }
+};
 </script>

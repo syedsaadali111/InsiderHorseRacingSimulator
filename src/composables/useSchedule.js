@@ -30,6 +30,7 @@ export const useSchedule = () => {
       schedule[race] = getNRandomElements(horses.value, HORSES_PER_ROUND);
     }
     store.dispatch('updateSchedule', schedule);
+    store.dispatch('initializeRaceQueue');
   };
 
   return {

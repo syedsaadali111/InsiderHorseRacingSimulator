@@ -3,6 +3,9 @@ button.button-primary {
   &:hover {
     @apply bg-indigo-800/85;
   }
+  &:disabled {
+    @apply bg-indigo-800/50 cursor-not-allowed;
+  }
 }
 
 table {
