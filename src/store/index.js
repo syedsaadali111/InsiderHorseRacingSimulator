@@ -3,13 +3,25 @@ import { createStore } from 'vuex';
 export const store = createStore({
   state() {
     return {
-      count: 0,
+      horses: [],
+      isRunning: false,
     };
   },
 
   mutations: {
-    increment(state) {
-      state.count++;
+    setHorses(state, horses) {
+      state.horses = horses;
+    },
+    setAnimationState(state, isRunning) {
+      state.isRunning = isRunning;
+    },
+  },
+
+  actions: {
+    //we can simply call this method if we want to reset game state.
+    initializeHorses({ commit }, horses) {
+      commit('setHorses', horses);
+      commit('setAnimationState', false);
     },
   },
 });

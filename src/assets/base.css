@@ -1,6 +1,17 @@
-.button-primary {
+button.button-primary {
   @apply bg-indigo-800 rounded-lg p-2 text-white cursor-pointer;
   &:hover {
     @apply bg-indigo-800/85;
+  }
+}
+
+table {
+  th,
+  td {
+    @apply p-1;
+  }
+  th,
+  td {
+    @apply border border-black;
   }
 }
