@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-4 px-4 bg-indigo-50 relative">
+  <div class="pb-4 px-4 bg-indigo-50 relative" ref="container">
     <h2
       class="text-xl font-medium text-center sticky top-0 bg-indigo-50 py-2 border-b border-gray-300"
     >
@@ -36,9 +36,22 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 const results = computed(() => store.state.results);
+
+const container = ref();
+watch(results, () => {
+  //autoscroll when new results are added
+  nextTick(() => {
+    //next tick ensures the newly added element is rendered
+    container.value.scrollTo({
+      top: container.value.scrollHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
+});
 </script>
