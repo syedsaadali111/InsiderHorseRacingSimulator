@@ -1,14 +1,21 @@
-# insiderhorseracingsimulator
+# Horse Racing Simulator (Frontend Assessment for Insider)
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the horse racing simulation app as requested by the instructions sent in mail.
 
-## Recommended IDE Setup
+This app is deployed using Vercel at (https://insider-horse-racing-simulator.vercel.app/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Functionalities
+1. Generates a list of 20 random horses, with a `name`, random `color` and a random value for `condition` in the range of 1-100.
+2. Generates a schedule for a race with 6 rounds of varying length. 10 randomly chosen horses participate in each round.
+3. Animates the racing horses on screen, and shows/updates the results for each round in real time.
+4. Success/Speed of horses are based on their condition value. Horses are _more likely_ to win with a higher condition value.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Technologies used
+1. Vite
+2. VueJS
+3. Vuex
+4. TailwindCSS
+5. Vitest + Vue Test Utils
 
 ## Project Setup
 
@@ -22,20 +29,8 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+npm run test
 ```
