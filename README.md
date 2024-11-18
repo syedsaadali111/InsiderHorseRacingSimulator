@@ -1,4 +1,4 @@
-# Horse Racing Simulator (Frontend Assessment for Insider)
+# Horse Racing Simulator
 
 This is the horse racing simulation app as requested by the instructions sent in mail.
 
