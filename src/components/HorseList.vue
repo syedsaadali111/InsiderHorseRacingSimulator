@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 bg-indigo-50">
-    <h2 class="text-xl font-medium text-center">Horse List</h2>
-    <table class="mx-auto mt-4">
+    <h2 class="text-xl font-medium text-center" data-test="horse-list-header">Horse List</h2>
+    <table class="mx-auto mt-4" data-test="horse-list-table">
       <thead>
         <tr>
           <th>#</th>
@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(horse, index) in horses" :key="horse.name">
+        <tr v-for="(horse, index) in horses" :key="horse.name" data-test="horse-list-row">
           <td>{{ index + 1 }}</td>
           <td>{{ horse.name }}</td>
           <td>{{ horse.condition }}</td>

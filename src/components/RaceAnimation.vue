@@ -3,6 +3,7 @@
     <div
       v-if="!currentParticipants?.length && !raceFinished"
       class="text-gray-500 p-2 rounded-xl mt-4 text-center"
+      data-test="race-animation-empty-state"
     >
       There are no current races. Generate a race program to begin!
     </div>
@@ -15,6 +16,7 @@
           class="border-y border-dotted border-black relative h-16 bg-gray-100 flex items-center justify-center tracking-wide"
           v-for="horse in currentParticipants"
           :key="horse.name + raceNumber"
+          data-test="race-horses"
         >
           <HorseImage
             :key="horse.name + '_' + raceNumber"
@@ -24,8 +26,11 @@
               left: `${(horse.offset / raceLength) * 100}%`,
               position: 'absolute',
             }"
+            data-test="race-horses-image"
           />
-          <span class="text-4xl font-bold text-gray-400/75">{{ horse.name }}</span>
+          <span class="text-4xl font-bold text-gray-400/75" data-test="race-horse-name">{{
+            horse.name
+          }}</span>
         </div>
       </div>
       <h2 class="text-center text-2xl font-medium mt-4">Lap {{ raceNumber }}: {{ raceLength }}m</h2>

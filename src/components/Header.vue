@@ -5,7 +5,12 @@
     </div>
 
     <div class="flex items-center justify-between gap-2">
-      <button class="button-primary" @click="generateSchedule" :disabled="isRunning">
+      <button
+        class="button-primary"
+        @click="generateSchedule"
+        :disabled="isRunning"
+        data-test="generate-schedule"
+      >
         Generate Program
       </button>
       <button class="button-primary" @click="toggleRace" :disabled="!schedule || isFinished">
